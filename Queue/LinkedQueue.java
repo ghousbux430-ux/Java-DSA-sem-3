@@ -67,7 +67,7 @@ public class LinkedQueue implements Queue {
         q.add(40);
 
         System.out.println("Queue size: " + q.size());
-        System.out.println("First element: " + q.first());
+        System.out.println("Queue First element: " + q.first());
 
         System.out.println("Removed: " + q.remove());
         System.out.println("Removed: " + q.remove());
