@@ -39,6 +39,11 @@ public class LinkedStack{
         return temp;
     }
 
+    public void push(Object obj){
+        top = new Node(obj,top);
+        size++;
+    }
+
     public Object bottom_element(){
         if(size==0){
             throw new IllegalStateException("stack is empty");
@@ -120,26 +125,71 @@ public class LinkedStack{
         }
     }
 
+    // this method will used to break the stack
+    public LinkedStack breakStacks(LinkedStack list){
+        LinkedStack l1 = new LinkedStack();
+        int mid = size/2;
 
-    public void Display(){
-        Node p = top;
-        while(p != null){
-            System.out.print(p.data+"-->");
-            p = p.next;
+        for(int i = 0; i<mid; i++){
+            l1.push(list.top.data);
+            list.pop();
         }
-        System.out.print("null");
+
+        return l1;
     }
-    public void push(Object obj){
-        top = new Node(obj,top);
-        size++;
+
+    // this method will use to merge the stacks
+    public static LinkedStack mergeStacks(LinkedStack a1, LinkedStack a2) {
+        LinkedStack mergedStack = new LinkedStack();
+
+        while (!a1.isEmpty()) {
+            mergedStack.push(a1.pop());
+        }
+
+        while (!a2.isEmpty()) {
+            mergedStack.push(a2.pop());
+        }
+
+        return mergedStack;
     }
+
+    public String toString(){
+
+        StringBuffer bf = new StringBuffer();
+        if(size == 0){
+            throw new IllegalStateException("Stack is empty");
+        }
+
+        for(Node i = top; i != null; i=i.next){
+            bf.append(i.data + " ");
+        }
+
+        return bf + " ";
+    }
+
+
     public static void main(String[] args) {
-        LinkedStack s = new LinkedStack();
-        s.push(1);
-        s.push(20);
-        s.push(3);
-        s.push(4);
-        s.push(5);
+        LinkedStack s1 = new LinkedStack();
+        s1.push(1);
+        s1.push(2);
+        s1.push(3);
+        s1.push(4);
+        s1.push(5);
+        s1.push(6);
+
+        LinkedStack l2 = new LinkedStack();
+        l2.push(7);
+        l2.push(8);
+        l2.push(9);
+
+        LinkedStack m_Stack = mergeStacks(s1,l2);
+        System.out.println("merged stack is : " + m_Stack);
+
+        // System.out.println("before breaking : "+s1);
+        // LinkedStack s2 = s1.breakStacks(s1);
+        // System.out.println("After breaking 1st stack is : "+s2);
+        // System.out.println("After breaking 2nd stack is : "+s1);
+
         // System.out.println(s.peek());
         // System.out.println("Bottom element is : "+s.bottom_element());
         // System.out.println("mid is : "+s.middle_element());
@@ -152,10 +202,10 @@ public class LinkedStack{
         // System.out.println();
         // System.out.println("peek "+s.peek() );
         // System.out.println("maximium element of the stack is : " + s.Max());
-        s.sort();
-        while(!s.isEmpty()) {
-            System.out.print(s.pop() + " ");
-        }
+        // s.sort();
+        // while(!s.isEmpty()) {
+        //     System.out.print(s.pop() + " ");
+        // }
 
     }
 }
