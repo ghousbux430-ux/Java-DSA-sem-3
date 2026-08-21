@@ -49,6 +49,32 @@ public class ArrayStack{
         a[size++] = obj;
     }
 
+    public Object[] breakStack(ArrayStack stack){
+        if(size == 0){
+            throw new IllegalStateException("stack is empty");
+        }
+
+        ArrayStack s1 = new ArrayStack(size/2);
+        ArrayStack s2 = new ArrayStack(size/2);
+        int originalSize = size;
+        int mid = size/2;
+
+        for(int i=0; i<mid; i++){
+            s1.push(stack.pop());
+        }
+
+        for(int i = mid; i<originalSize; i++){
+            s2.push(stack.pop());
+        }
+
+        Object[] newArr = new Object[2];
+        newArr[0] = s1;
+        newArr[1] = s2;
+
+        return newArr;
+    }
+
+
     public String toString(){
         StringBuffer bf = new StringBuffer();
 
@@ -64,14 +90,26 @@ public class ArrayStack{
     }
 
     public static void main(String[] args) {
-        ArrayStack a = new ArrayStack(3);
-        a.push("this");
-        a.push("is");
-        a.push(2);
-        a.push("and");
-        a.push(3);
+        ArrayStack stack = new ArrayStack(3);
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        stack.push(6);
 
-        System.out.println(a);
+
+        System.out.println("Stack before breaking : " + stack);
+
+        Object[] breaked_Stacks = stack.breakStack(stack);
+
+        System.out.println("After breaking.....");
+
+        ArrayStack s1 = (ArrayStack)breaked_Stacks[0];
+        ArrayStack s2 = (ArrayStack)breaked_Stacks[1];
+        
+        System.out.println("first stack is : "+s1);
+        System.out.println("second stack is : "+s2);
 
         // System.out.println("top is : "+a.peek());
         // System.out.println("pop : "+a.pop());
