@@ -1,4 +1,4 @@
-// package Stacks;
+package Stacks;
 
 public class ArrayStack{
     private int size;
