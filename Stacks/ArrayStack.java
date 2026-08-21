@@ -1,4 +1,4 @@
-package Stacks;
+// package Stacks;
 
 public class ArrayStack{
     private int size;
@@ -49,6 +49,8 @@ public class ArrayStack{
         a[size++] = obj;
     }
 
+
+    // method for breaking one stack into two parts
     public Object[] breakStack(ArrayStack stack){
         if(size == 0){
             throw new IllegalStateException("stack is empty");
@@ -74,6 +76,22 @@ public class ArrayStack{
         return newArr;
     }
 
+    // this method will merge two stacks into one stack
+
+    public static ArrayStack mergeStacks(ArrayStack s1, ArrayStack s2){
+        ArrayStack mergeStack = new ArrayStack(s1.Size()+s2.Size());
+
+        while(!s1.isEmpty()){
+            mergeStack.push(s1.pop());
+        }
+
+        while(!s2.isEmpty()){
+            mergeStack.push(s2.pop());
+        }
+
+        return mergeStack;
+    }
+
 
     public String toString(){
         StringBuffer bf = new StringBuffer();
@@ -90,26 +108,36 @@ public class ArrayStack{
     }
 
     public static void main(String[] args) {
-        ArrayStack stack = new ArrayStack(3);
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
-        stack.push(6);
+        ArrayStack stack1 = new ArrayStack(3);
+        stack1.push(1);
+        stack1.push(2);
+        stack1.push(3);
+        stack1.push(4);
+        stack1.push(5);
+        stack1.push(6);
 
+        ArrayStack stack2 = new ArrayStack(3);
+        stack2.push(7);
+        stack2.push(8);
 
-        System.out.println("Stack before breaking : " + stack);
+        // ArrayStack mergedStack = mergeStacks(stack1,stack2);
+        // System.out.println("merged stack is : " + mergedStack);
 
-        Object[] breaked_Stacks = stack.breakStack(stack);
+        System.out.println("Stack before breaking : " + stack1);
+
+        Object[] breaked_Stacks = stack1.breakStack(stack1);
 
         System.out.println("After breaking.....");
 
         ArrayStack s1 = (ArrayStack)breaked_Stacks[0];
         ArrayStack s2 = (ArrayStack)breaked_Stacks[1];
-        
+
         System.out.println("first stack is : "+s1);
         System.out.println("second stack is : "+s2);
+
+
+
+        
 
         // System.out.println("top is : "+a.peek());
         // System.out.println("pop : "+a.pop());
