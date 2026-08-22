@@ -21,6 +21,7 @@ public class LinkedStack{
         return size;
     }
 
+    // method only to display the top of stack
     public Object peek(){
         if(size==0){
             throw new IllegalStateException("stack is empty");
@@ -55,11 +56,13 @@ public class LinkedStack{
         return top;
     }
 
+    // this push the element to stack
     public void push(Object obj){
         top = new Node(obj,top);
         size++;
     }
 
+    // this return the bottom element
     public Object bottom_element(){
         if(size==0){
             throw new IllegalStateException("stack is empty");
@@ -73,6 +76,7 @@ public class LinkedStack{
         return b;
     }
 
+    // this return the middle element
     public Object middle_element(){
         if(size==0){
             throw new IllegalStateException("stack is empty");
@@ -87,6 +91,7 @@ public class LinkedStack{
        
     }
 
+    // this insert element at bottom
     private void insertAtBottom(Object data) {
         if (isEmpty()) {
             push(data);
@@ -97,6 +102,7 @@ public class LinkedStack{
         push(temp);
     }
 
+    // this method reverse the stack
     public void reverse() {
         if (isEmpty()) {
             return;
@@ -106,6 +112,7 @@ public class LinkedStack{
         insertAtBottom(temp);
     }
 
+    // this will return the max element
     public Object Max(){
         if(isEmpty()){
             throw new IllegalStateException("stack is empty");
@@ -124,6 +131,7 @@ public class LinkedStack{
         
     }
 
+    // the method for sorting the stack
     public void sort(){
         LinkedStack sorted = new LinkedStack();
 
