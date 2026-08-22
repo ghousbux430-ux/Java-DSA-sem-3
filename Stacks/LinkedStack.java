@@ -28,15 +28,31 @@ public class LinkedStack{
         return top.data;
     }
 
+    // this method delete the top element of the stack.
     public Object pop(){
         if(size==0){
             throw new IllegalStateException("stack is empty");
         }
-
         Object temp = top.data;
         top = top.next;
         --size;
         return temp;
+    }
+
+    // this method delete the element which you want.
+    public Object pop(Object obj){
+        if(obj==top.data){
+            return top=top.next;
+        }
+        Node i = top;
+        while(i.next != null){
+            if(i.next.data == obj){
+                i.next = i.next.next;
+                break;
+            }
+            i = i.next;
+        }
+        return top;
     }
 
     public void push(Object obj){
@@ -184,6 +200,9 @@ public class LinkedStack{
 
         LinkedStack m_Stack = mergeStacks(s1,l2);
         System.out.println("merged stack is : " + m_Stack);
+        m_Stack.pop(2);
+        System.out.println("merged stack after poping 2 : "+m_Stack);
+
 
         // System.out.println("before breaking : "+s1);
         // LinkedStack s2 = s1.breakStacks(s1);
