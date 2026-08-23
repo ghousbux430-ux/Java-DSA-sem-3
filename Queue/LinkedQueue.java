@@ -70,6 +70,7 @@ public class LinkedQueue implements Queue {
         }
     }
 
+    // this will calculate the sum of the Queue
     public int sum(){
         int sum = 0;
         Node p = head.next;
