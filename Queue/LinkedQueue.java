@@ -57,7 +57,7 @@ public class LinkedQueue implements Queue {
         return temp;
     }
 
-    // this method will minus the credit and debit
+    // This method will minus the credit and debit
     public void isRemaining(LinkedQueue credit, LinkedQueue debit){
         int remaining = credit.sum() - debit.sum();
 
@@ -70,7 +70,7 @@ public class LinkedQueue implements Queue {
         }
     }
 
-    // this will calculate the sum of the Queue
+    // This will calculate the sum of the Queue
     public int sum(){
         int sum = 0;
         Node p = head.next;
