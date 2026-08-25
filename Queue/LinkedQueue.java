@@ -11,7 +11,8 @@ interface Queue{
 public class LinkedQueue implements Queue {
     static class Node{
         Object data;
-        Node prev = this, next = this;
+        Node prev = this,
+        next = this;
 
         Node(Object data){
             this.data = data;
