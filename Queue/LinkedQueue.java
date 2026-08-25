@@ -77,6 +77,7 @@ public class LinkedQueue implements Queue {
         Node p = head.next;
         while(p!=head){
             sum+=(int)p.data;
+
             p = p.next;
         }
         return sum;
@@ -96,6 +97,7 @@ public class LinkedQueue implements Queue {
             p = p.next;
         }
         return sb.toString();
+
     }
 
     public static void main(String[] args) {
